@@ -8,7 +8,7 @@ Just create a new form, fill in the required fields:
 	<li>Questions: These are the questions that the user has to answer on a 1-5 range</li>
 </ul>
 
-When you finished creating your form, save it, and place it anywhere by the shortcode:
-[upd8-feedback id="{form-id}"]
+When you finished creating your form, save it, and place it anywhere by the shortcode:<br />
+<strong>[upd8-feedback id="{form-id}"]</strong>
 
-Shortcode of form is also displayed on the form edit page, right after save.
+Shortcode of form is also displayed on the form edit page.
