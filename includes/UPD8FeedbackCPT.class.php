@@ -168,7 +168,7 @@ class UPD8FeedbackCPT {
 				<?php endforeach; ?>
 			</div>
 		</div>	
-		<?php if($formfills && $answers): ?>
+		<?php if($formfills): ?>
 		<div class="upd8-feedback-form-fills">
 			<h4><?php _e('Form Fills', 'upd8_feedback') ?></h4>
 			<table class="form-fills">

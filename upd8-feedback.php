@@ -3,7 +3,7 @@
  * Plugin Name: UPD8 Feedback
  * Plugin URI: http://upd8.hu
  * Description: A Fedback plugin for WordPress
- * Version: 1.0.0
+ * Version: 0.1.0
  * Author: UPD8
  * Author URI: http://upd8.hu
  * License: GPL2

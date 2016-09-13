@@ -1,5 +1,5 @@
 # upd8-feedback
-A simple & lightweight WordPress plugin to collect your users 1-5, starrating-like feedback.
+A simple & lightweight WordPress plugin to collect your users 5 star rating like feedback.
 
 Just create a new form, fill in the required fields:
 <ul>
@@ -9,6 +9,6 @@ Just create a new form, fill in the required fields:
 </ul>
 
 When you finished creating your form, save it, and place it anywhere by the shortcode:<br />
-<strong>[upd8-feedback id="{form-id}"]</strong>
+<strong>[upd8-feedback id="FORM-ID"]</strong>
 
 Shortcode of form is also displayed on the form edit page.
