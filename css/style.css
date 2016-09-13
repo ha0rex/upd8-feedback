@@ -1,0 +1,99 @@
+.upd8-feedback {
+	width:100%;
+	height:100%;
+}
+
+.upd8-feedback .wrapper {
+	width:100%;
+	overflow-x:hidden;
+}
+
+.upd8-feedback .inner-wrapper {
+	left:0;
+}
+
+.upd8-feedback .wrapper::after {
+	content:"";
+	display:table;
+	clear:both;
+}
+
+.upd8-feedback .prologue, .upd8-feedback .conclusion, .upd8-feedback .questions {
+	display:inline-block;
+	text-align:center;
+	vertical-align: top;
+}
+
+.upd8-feedback .prologue {
+	z-index:3;
+}
+
+.upd8-feedback .prologue .buttons_container, .upd8-feedback .conclusion .buttons_container {
+	display:block;
+	text-align:center;
+	margin-top:30px;
+}
+
+.upd8-feedback .questions {
+	z-index:2;
+}
+
+.upd8-feedback h2 {
+	text-align:center;
+}
+
+.upd8-feedback .conclusion {
+	z-index:1;
+}
+
+.upd8-feedback .questions {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+
+.upd8-feedback .questions li {
+	display:inline-block;
+	margin:0;
+}
+
+.upd8-feedback .questions li p {
+	text-align:center;
+	font-size:20px;
+}
+
+.upd8-feedback .questions li .stars {
+	text-align:center;
+	font-size:40px;
+	padding:0;
+	margin:30px 0;
+}
+
+.upd8-feedback .questions li .stars li a {
+	color:#ccc;
+}
+
+.upd8-feedback .questions li .stars li a:hover {
+	cursor:pointer;
+}
+
+.upd8-feedback .questions li .stars .hover a {
+	color:#787878;
+}
+
+.upd8-feedback .questions li .stars .active a {
+	color:#fffc00;
+}
+
+.upd8-feedback .questions li .buttons_container {
+	display:block;
+	text-align:center;
+}
+
+.upd8-feedback .questions li .buttons_container button {
+	width:120px;
+}
+
+.upd8-feedback .questions li .buttons_container .prev {
+	margin-right:10px;
+}
