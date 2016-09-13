@@ -50,3 +50,9 @@
 .upd8-feedback-form-editor .msg-warning {
 	color:red;
 }
+
+.upd8-feedback-form-editor .shortcode {
+	font-size:20px;
+	width:300px;
+	margin-top:-7px;
+}

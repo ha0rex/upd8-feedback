@@ -125,6 +125,12 @@ class UPD8FeedbackCPT {
 		?>
 		<div class="upd8-feedback-form-editor">
 			<h3><?php _e('Feedback', 'upd8-feedback') ?></h3>
+			<?php if($object->ID): ?>
+				<div class="row">
+					<label for="shortcode"><?php _e('Shortcode', 'upd8-feedback') ?></label>
+					<input type="text" class="shortcode" disabled value="[upd8-feedback id=&quot;<?php echo $object->ID ?>&quot;]" />
+				</div>
+			<?php endif; ?>
 			<div class="row">
 				<label for="prologue"><?php _e('Prologue', 'upd8-feedback') ?></label>
 				<?php
