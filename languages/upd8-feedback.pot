@@ -1,0 +1,115 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-13 17:31+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#: includes/UPD8FeedbackCPT.class.php:30 includes/UPD8FeedbackCPT.class.php:127
+msgid "Feedback"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:31
+msgid "Feedback form"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:32
+msgid "Add new"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:33
+msgid "Add new Feedback form"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:34
+msgid "Edit Feedback form"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:35
+msgid "New Feedback form"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:36
+msgid "View Feedback form"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:37
+msgid "No Feedback forms found"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:129
+msgid "Prologue"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:141
+msgid "Conclusion"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:153
+msgid "Questions"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:155
+msgid ""
+"Warning! Reordering or modifying questions on an existing form can cause "
+"confusion while reading stats. If you still want to do that, it's "
+"recommended to create a new form istead."
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:159
+msgid "Question"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:170
+msgid "Date"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:171
+msgid "IP"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:194
+msgid "AVG"
+msgstr ""
+
+#: includes/UPD8Shortcodes.class.php:46
+msgid "Previous"
+msgstr ""
+
+#: includes/UPD8Shortcodes.class.php:46
+msgid "Next"
+msgstr ""
+
+#: includes/UPD8Shortcodes.class.php:57
+msgid "Let's go!"
+msgstr ""
+
+#: includes/UPD8Shortcodes.class.php:68
+msgid "Close"
+msgstr ""
+
+#. Name of the plugin
+msgid "UPD8 Feedback"
+msgstr ""
+
+#. Description of the plugin
+msgid "A Fedback plugin for WordPress"
+msgstr ""
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "http://upd8.hu"
+msgstr ""
+
+#. Author of the plugin
+msgid "UPD8"
+msgstr ""

@@ -27,14 +27,14 @@ class UPD8FeedbackCPT {
 		register_post_type( 'upd8_feedback',
 		  array(
 			'labels' => array(
-			  'name' => __( 'Feedback', 'upd8_feedback' ),
-			  'singular_name' => __( 'Feedback form', 'upd8_feedback' ),
-			  'add_new' => __( 'Add new', 'upd8_feedback' ),
-			  'add_new_item' => __( 'Add new Feedback form', 'upd8_feedback' ),
-			  'edit_item' => __( 'Edit Feedback form', 'upd8_feedback' ),
-			  'new_item' => __( 'New Feedback form', 'upd8_feedback' ),
-			  'view_item' => __( 'View Feedback form', 'upd8_feedback' ),
-			  'not_found' => __( 'No Feedback forms found', 'upd8_feedback' ),
+			  'name' => __( 'Feedback', 'upd8-feedback' ),
+			  'singular_name' => __( 'Feedback form', 'upd8-feedback' ),
+			  'add_new' => __( 'Add new', 'upd8-feedback' ),
+			  'add_new_item' => __( 'Add new Feedback form', 'upd8-feedback' ),
+			  'edit_item' => __( 'Edit Feedback form', 'upd8-feedback' ),
+			  'new_item' => __( 'New Feedback form', 'upd8-feedback' ),
+			  'view_item' => __( 'View Feedback form', 'upd8-feedback' ),
+			  'not_found' => __( 'No Feedback forms found', 'upd8-feedback' ),
 			),
 			'public' => true,
 			'has_archive' => false,
@@ -124,9 +124,9 @@ class UPD8FeedbackCPT {
 		
 		?>
 		<div class="upd8-feedback-form-editor">
-			<h3><?php _e('Feedback', 'upd8_feedback') ?></h3>
+			<h3><?php _e('Feedback', 'upd8-feedback') ?></h3>
 			<div class="row">
-				<label for="prologue"><?php _e('Prologue', 'upd8_feedback') ?></label>
+				<label for="prologue"><?php _e('Prologue', 'upd8-feedback') ?></label>
 				<?php
 				wp_editor( $prologue, 'prologue', array(
 					'wpautop'       => true,
@@ -138,7 +138,7 @@ class UPD8FeedbackCPT {
 				?>
 			</div>
 			<div class="row">
-				<label for="conclusion"><?php _e('Conclusion', 'upd8_feedback') ?></label>
+				<label for="conclusion"><?php _e('Conclusion', 'upd8-feedback') ?></label>
 				<?php
 				wp_editor( $conclusion, 'conclusion', array(
 					'wpautop'       => true,
@@ -150,16 +150,21 @@ class UPD8FeedbackCPT {
 				?>
 			</div>
 			<div class="questions">
-				<h4><?php _e('Questions', 'upd8_feedback') ?></h4>
+				<h4><?php _e('Questions', 'upd8-feedback') ?></h4>
+				<?php if($questions[0] != ''): ?>
+					<h5 class="msg msg-warning"><?php _e('Warning! Reordering or modifying questions on an existing form can cause confusion while reading stats. If you still want to do that, it\'s recommended to create a new form istead.', 'upd8-feedback') ?></h5>
+				<?php endif; ?>
 				<?php foreach( $questions as $i => $question ): ?>
 					<div class="row">
-						<label for="questions"><?php _e('Question', 'upd8_feedback') ?> #<span class="nr"><?php echo $i+1 ?></span></label>		
+						<label for="questions"><?php _e('Question', 'upd8-feedback') ?> #<span class="nr"><?php echo $i+1 ?></span></label>		
 						<textarea name="questions[]"><?php echo $question ?></textarea>		
 					</div>
 				<?php endforeach; ?>
 			</div>
 		</div>	
+		<?php if($formfills && $answers): ?>
 		<div class="upd8-feedback-form-fills">
+			<h4><?php _e('Form Fills', 'upd8_feedback') ?></h4>
 			<table class="form-fills">
 				<tr class="heading">
 					<th><?php _e('Date', 'upd8-feedback') ?></th>
@@ -178,7 +183,7 @@ class UPD8FeedbackCPT {
 							<?php $fill->answers = json_decode($fill->answers); ?>
 							<?php if( is_array($fill->answers) ): ?>
 								<?php foreach( $fill->answers as $i=>$answer ): ?>
-									<td><?php echo str_repeat('★', $answer).' ('.$answer.')' ?></td>
+									<td><?php echo '<span class="stars">'.str_repeat('★', $answer).'</span> ('.$answer.')' ?></td>
 									<?php $average[$i]+=$answer; ?>
 								<?php endforeach; ?>
 							<?php endif; ?>
@@ -192,7 +197,8 @@ class UPD8FeedbackCPT {
 					<?php endforeach; ?>
 				</tr>				
 			</table>
-		</div>	
+		</div>
+		<?php endif; ?>	
 		<?php
 		
 		return $this;

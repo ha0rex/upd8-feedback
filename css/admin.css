@@ -33,3 +33,20 @@
 	border-top:1px solid #ccc;
 	padding:5px 10px;
 }
+
+.upd8-feedback-form-fills table th {
+	background:#f0f0f0;
+}
+
+.upd8-feedback-form-fills table td .stars {
+	color:yellow;
+	text-shadow:
+	 -1px -1px 0 #999992,  
+	  1px -1px 0 #999992,
+	  -1px 1px 0 #999992,
+	   1px 1px 0 #999992;
+}
+
+.upd8-feedback-form-editor .msg-warning {
+	color:red;
+}

@@ -20,12 +20,22 @@ class UPD8Feedback {
 		
 		$this->loadFrontendCSSAndJS();
 		
+		$this->loadTextDomain();
+		
 		if ( defined( 'WPB_VC_VERSION' ) ) {
 			/* $this->initVisualComposerAddOn(); */
 		}
 		
 		return $this;
 	}
+	
+	private function loadTextDomain() {
+		add_action( 'init', array( $this, 'loadTextDomainFunc') );
+	}
+	
+	public function loadTextDomainFunc() {
+		load_plugin_textdomain( 'upd8-feedback', false, dirname( plugin_basename( __FILE__ ) ) . '/../languages' ); 
+	} 
 	
 	public static function install() {
 		global $wpdb;
@@ -86,11 +96,13 @@ class UPD8Feedback {
 				'time' => current_time( 'mysql' ), 
 				'form_id' => $_POST['form_id'], 
 				'answers' => json_encode($_POST['answers']), 
-				'ip' => $_SERVER['HTTP_X_FORWARDED_FOR']
+				'ip' => $_SERVER['REMOTE_ADDR']
 			) 
 		);	
 		
-		return 'hello';
+		echo $table_name;
+		
+		return true;
 		die;	
 	}
 }
