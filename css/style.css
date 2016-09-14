@@ -69,20 +69,8 @@
 	margin:30px 0;
 }
 
-.upd8-feedback .questions li .stars li a {
-	color:#ccc;
-}
-
 .upd8-feedback .questions li .stars li a:hover {
 	cursor:pointer;
-}
-
-.upd8-feedback .questions li .stars .hover a {
-	color:#787878;
-}
-
-.upd8-feedback .questions li .stars .active a {
-	color:#fffc00;
 }
 
 .upd8-feedback .questions li .buttons_container {

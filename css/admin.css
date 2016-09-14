@@ -56,3 +56,7 @@
 	width:300px;
 	margin-top:-7px;
 }
+
+.upd8-feedback-form-fills table tr.duplicate {
+	opacity:0.5;
+}

@@ -7,6 +7,8 @@ function UPD8FeedbackAddRow() {
 		textarea = jQuery('textarea', question).val('');
 		
 		
+	jQuery('.upd8-feedback-form-editor .color-picker').wpColorPicker();
+	
 	jQuery('label .nr', question).html( parseInt(jQuery('label .nr', question).html())+1 );
 
 	jQuery('.upd8-feedback-form-editor .questions').append(question);

@@ -94,6 +94,10 @@ class UPD8FeedbackCPT {
 
 
 		/* Save fields */
+		update_post_meta( $post_id, 'display-skip-btn', $_POST['display-skip-btn'] );
+		update_post_meta( $post_id, 'stars-color', $_POST['stars-color'] );
+		update_post_meta( $post_id, 'stars-color-hover', $_POST['stars-color-hover'] );
+		update_post_meta( $post_id, 'stars-color-active', $_POST['stars-color-active'] );
 		update_post_meta( $post_id, 'prologue', $_POST['prologue'] );
 		update_post_meta( $post_id, 'conclusion', $_POST['conclusion'] );	
 		update_post_meta( $post_id, 'questions', $questions );		
@@ -102,6 +106,22 @@ class UPD8FeedbackCPT {
 	}
 	
 	public function addMetaBoxesCallback( $object, $box ) { 
+		/* getting value of display-skip-btn */
+		$display_skip_btn = get_post_meta( $object->ID, 'display-skip-btn', true );	
+		$display_skip_btn = $display_skip_btn ? 'checked' : '';
+		
+		/* getting stars color */
+		$stars_color = get_post_meta( $object->ID, 'stars-color', true );	
+		$stars_color = $stars_color ? $stars_color : '#CCCCCC';
+		
+		/* getting stars color (hover) */
+		$stars_color_hover = get_post_meta( $object->ID, 'stars-color-hover', true );	
+		$stars_color_hover = $stars_color_hover ? $stars_color_hover : '#787878';
+		
+		/* getting stars color (active) */
+		$stars_color_active = get_post_meta( $object->ID, 'stars-color-active', true );	
+		$stars_color_active = $stars_color_active ? $stars_color_active : '#FFFC00';
+		
 		/* getting prologue */
 		$prologue = get_post_meta( $object->ID, 'prologue', true );	
 		$prologue = $prologue ? $prologue : '';
@@ -131,6 +151,22 @@ class UPD8FeedbackCPT {
 					<input type="text" class="shortcode" disabled value="[upd8-feedback id=&quot;<?php echo $object->ID ?>&quot;]" />
 				</div>
 			<?php endif; ?>
+			<div class="row">
+				<label for="display-skip-btn"><?php _e('Display skip button', 'upd8-feedback') ?></label>
+				<input name="display-skip-btn" type="checkbox" <?php echo $display_skip_btn ?> />
+			</div>	
+			<div class="row">
+				<label for="stars-color"><?php _e('Stars color', 'upd8-feedback') ?></label>
+				<input class="color-picker" type="text" name="stars-color" value="<?php esc_attr_e($stars_color); ?>"/>
+			</div>	
+			<div class="row">
+				<label for="stars-color-hover"><?php _e('Stars color (hover)', 'upd8-feedback') ?></label>
+				<input class="color-picker" type="text" name="stars-color-hover" value="<?php esc_attr_e($stars_color_hover); ?>"/>
+			</div>	
+			<div class="row">
+				<label for="stars-color-active"><?php _e('Stars color (active)', 'upd8-feedback') ?></label>
+				<input class="color-picker" type="text" name="stars-color-active" value="<?php esc_attr_e($stars_color_active); ?>"/>
+			</div>			
 			<div class="row">
 				<label for="prologue"><?php _e('Prologue', 'upd8-feedback') ?></label>
 				<?php
@@ -169,12 +205,14 @@ class UPD8FeedbackCPT {
 			</div>
 		</div>	
 		<?php if($formfills): ?>
+		<?php $ip_addresses = array(); ?>
 		<div class="upd8-feedback-form-fills">
-			<h4><?php _e('Form Fills', 'upd8_feedback') ?></h4>
+			<h4><?php _e('Form Fills', 'upd8-feedback') ?></h4>
 			<table class="form-fills">
 				<tr class="heading">
 					<th><?php _e('Date', 'upd8-feedback') ?></th>
 					<th><?php _e('IP', 'upd8-feedback') ?></th>
+					<th><?php _e('Hostname', 'upd8-feedback') ?></th>
 					
 					<?php foreach( $questions as $i => $question ): ?>
 						<th><?php echo ($i+1).'. '.$question ?></th>
@@ -182,24 +220,29 @@ class UPD8FeedbackCPT {
 				</tr>
 				<?php foreach( $formfills as $fill ):  ?>
 					<?php if( $fill->answers ): ?>
-						<tr>
+						<tr class="<?php echo isset($ip_addresses[$fill->ip]) ? 'duplicate' : '' ?>">
 							<td><?php echo $fill->time ?></td>
-							<td><?php echo $fill->ip ?></td>
+							<td><?php echo $fill->ip ?><?php echo isset($ip_addresses[$fill->ip]) ? ' (DUP!)' : '' ?></td>
+							<td><?php echo gethostbyaddr($fill->ip) ?></td>
+							
+							<?php $ip_addresses[$fill->ip]++; ?>
 						
 							<?php $fill->answers = json_decode($fill->answers); ?>
 							<?php if( is_array($fill->answers) ): ?>
 								<?php foreach( $fill->answers as $i=>$answer ): ?>
 									<td><?php echo '<span class="stars">'.str_repeat('★', $answer).'</span> ('.$answer.')' ?></td>
 									<?php $average[$i]+=$answer; ?>
+									<?php $average_count[$i] = $answer == 0 ? $average_count[$i] : $average_count[$i]+1; ?>
 								<?php endforeach; ?>
 							<?php endif; ?>
 						</tr>
 					<?php endif; ?>
 				<?php endforeach; ?>
 				<tr class="average">
-					<th colspan="2"><?php _e('AVG', 'upd8-feedback') ?></th>
+					<th><?php _e('AVG', 'upd8-feedback') ?></th>
+					<th colspan="2"><?php printf( __("%s individual IPs", 'upd8-feedback'), count($ip_addresses) ) ?></th>
 					<?php foreach( $questions as $i => $question ): ?>
-						<th><?php echo $average[$i]/count($formfills) ?></th>
+						<th><?php echo $average[$i]/$average_count[$i] ?></th>
 					<?php endforeach; ?>
 				</tr>				
 			</table>
@@ -223,12 +266,14 @@ class UPD8FeedbackCPT {
 	
 	private function enqueueAdminJS() {
 		wp_enqueue_script( 'upd8-feedback-admin', plugin_dir_url(__FILE__).'../js/admin-functions.js', false, $this->getPluginVersion(), true );
+		wp_enqueue_script( 'wp-color-picker');
 		
 		return $this;
 	}
 	
 	private function enqueueAdminCSS() {
 		wp_enqueue_style( 'upd8-feedback-admin', plugin_dir_url(__FILE__).'../css/admin.css', array(), $this->getPluginVersion(), 'all' );
+       	wp_enqueue_style( 'wp-color-picker');
 		
 		return $this;
 	}
