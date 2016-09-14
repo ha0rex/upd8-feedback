@@ -8,6 +8,8 @@ jQuery(document).ready(function() {
 	step = 0,
 	last_step = jQuery('.upd8-feedback .inner-wrapper .questions > li').length + 2;
 	
+	var slide_to_next_auto = jQuery('.upd8-feedback').attr('data-slide-to-next-auto') == 1 ? true : false; 
+	var display_skip_btn = jQuery('.upd8-feedback').attr('data-display-skip-btn') == 1 ? true : false; 
 	
 	UPD8FeedbackResize();
 	
@@ -31,25 +33,35 @@ jQuery(document).ready(function() {
 			stars_ul = jQuery('<ul class="stars"></ul>'),
 			input = jQuery('.answer', this),
 			prev_btn = jQuery('.buttons_container .prev', this),
-			next_btn = jQuery('.buttons_container .next', this);
+			next_btn = jQuery('.buttons_container .next', this),
+			skip_btn = jQuery('.buttons_container .skip', this);
 		
 		for(var i=1; i<6; i++) {
 			stars[i] =  jQuery('<li><a data-value="'+i+'">★</a></li>');
 			stars_ul.append(stars[i]);
 			stars[i].click(function() {
+				jQuery('li', stars_ul).removeClass('active');
 				for( var j=0; j<=jQuery('a', this).attr('data-value'); j++ ) {
 					jQuery('li:nth-child('+(j)+')', stars_ul).addClass('active');
 				}
 				input.val(jQuery('a', this).attr('data-value'));
-				setTimeout(function() {
-					jQuery('.upd8-feedback .inner-wrapper').animate({
-						marginLeft: '-='+width_of_module+'px'
-					}, 600);
-					step++;
-					if( step == last_step-1 ) {
-						UPD8FeedbackSendResults();
+				if( slide_to_next_auto ) {
+					setTimeout(function() {
+							jQuery('.upd8-feedback .inner-wrapper').animate({
+								marginLeft: '-='+width_of_module+'px'
+							}, 600);
+							step++;
+							if( step == last_step-1 ) {
+								UPD8FeedbackSendResults();
+							}
+
+					}, 1000);
+				}
+				else {
+					if( next_btn.css('display') == 'none' ) {
+						skip_btn.fadeOut(600).replaceWith(next_btn.fadeIn(600));
 					}
-				}, 1000);
+				}
 			});
 			
 			stars[i].mouseover(function() {
@@ -69,7 +81,7 @@ jQuery(document).ready(function() {
 			step--;		
 		});	
 		
-		next_btn.click(function() {
+		next_btn.add(skip_btn).click(function() {
 			jQuery('.upd8-feedback .inner-wrapper').animate({
 				marginLeft: '-='+width_of_module+'px'
 			}, 600);	

@@ -95,6 +95,7 @@ class UPD8FeedbackCPT {
 
 		/* Save fields */
 		update_post_meta( $post_id, 'display-skip-btn', $_POST['display-skip-btn'] );
+		update_post_meta( $post_id, 'slide-to-next-auto', $_POST['slide-to-next-auto'] );
 		update_post_meta( $post_id, 'stars-color', $_POST['stars-color'] );
 		update_post_meta( $post_id, 'stars-color-hover', $_POST['stars-color-hover'] );
 		update_post_meta( $post_id, 'stars-color-active', $_POST['stars-color-active'] );
@@ -109,6 +110,10 @@ class UPD8FeedbackCPT {
 		/* getting value of display-skip-btn */
 		$display_skip_btn = get_post_meta( $object->ID, 'display-skip-btn', true );	
 		$display_skip_btn = $display_skip_btn ? 'checked' : '';
+		
+		/* getting value of slide-to-next-auto */
+		$slide_to_next_auto = get_post_meta( $object->ID, 'slide-to-next-auto', true );	
+		$slide_to_next_auto = $slide_to_next_auto ? 'checked' : '';
 		
 		/* getting stars color */
 		$stars_color = get_post_meta( $object->ID, 'stars-color', true );	
@@ -154,7 +159,11 @@ class UPD8FeedbackCPT {
 			<div class="row">
 				<label for="display-skip-btn"><?php _e('Display skip button', 'upd8-feedback') ?></label>
 				<input name="display-skip-btn" type="checkbox" <?php echo $display_skip_btn ?> />
-			</div>	
+			</div>
+			<div class="row">
+				<label for="slide-to-next-auto"><?php _e('Slide to next automatically', 'upd8-feedback') ?></label>
+				<input name="slide-to-next-auto" type="checkbox" <?php echo $slide_to_next_auto ?> />
+			</div>		
 			<div class="row">
 				<label for="stars-color"><?php _e('Stars color', 'upd8-feedback') ?></label>
 				<input class="color-picker" type="text" name="stars-color" value="<?php esc_attr_e($stars_color); ?>"/>

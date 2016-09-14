@@ -60,6 +60,10 @@ class UPD8Shortcodes {
 		/* getting value of display-skip-btn */
 		$display_skip_btn = get_post_meta( $atts['id'], 'display-skip-btn', true );	
 		$display_skip_btn = $display_skip_btn ? true : false;
+		
+		/* getting value of slide-to-next-auto */
+		$slide_to_next_auto = get_post_meta( $atts['id'], 'slide-to-next-auto', true );	
+		$slide_to_next_auto = $slide_to_next_auto ? true : false;
 			
 		$prologue = get_post_meta( $atts['id'], 'prologue', true );	
 		$prologue = $prologue ? $prologue : '';
@@ -79,7 +83,10 @@ class UPD8Shortcodes {
 				<div class="buttons_container">
 					<button class="prev">'.__('Previous', 'upd8-feedback').'</button>
 					'.( $display_skip_btn ? 
-					'<button class="next">'.__('Skip', 'upd8-feedback').'</button>' : 
+					'<button class="skip">'.__('Skip', 'upd8-feedback').'</button>' : 
+					'' ).'
+					'.( !$slide_to_next_auto ? 
+					'<button class="next">'.__('Next', 'upd8-feedback').'</button>' : 
 					'' ).'
 				</div>
 			</li>';
@@ -87,7 +94,7 @@ class UPD8Shortcodes {
 
 		return '<script type="text/javascript">var ajax_url = \''.admin_url( 'admin-ajax.php' ).'\';</script>
 		'.$this->setUpStyles( $atts['id'] ).'
-		<div class="upd8-feedback" data-form-id="'.$atts['id'].'">
+		<div class="upd8-feedback" data-form-id="'.$atts['id'].'" data-slide-to-next-auto="'.( $slide_to_next_auto ? 1 : 0 ).'" data-display-skip-btn="'.( $display_skip_btn ? 1 : 0 ).'">
 			<h2>'.$feedback->post_title.'</h2>
 			<div class="wrapper">
 				<div class="inner-wrapper">

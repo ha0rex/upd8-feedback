@@ -82,6 +82,10 @@
 	width:120px;
 }
 
+.upd8-feedback .questions li .buttons_container .next {
+	display:none;
+}
+
 .upd8-feedback .questions li .buttons_container .prev {
 	margin-right:10px;
 }
