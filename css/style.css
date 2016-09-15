@@ -89,3 +89,7 @@
 .upd8-feedback .questions li .buttons_container .prev {
 	margin-right:10px;
 }
+
+.upd8-feedback .form-already-filled {
+	text-align:center;
+}

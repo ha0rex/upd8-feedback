@@ -96,9 +96,14 @@ class UPD8FeedbackCPT {
 		/* Save fields */
 		update_post_meta( $post_id, 'display-skip-btn', $_POST['display-skip-btn'] );
 		update_post_meta( $post_id, 'slide-to-next-auto', $_POST['slide-to-next-auto'] );
+		
+		update_post_meta( $post_id, 'prevent-duplicates-cookie', $_POST['prevent-duplicates-cookie'] );
+		update_post_meta( $post_id, 'prevent-duplicates-ip', $_POST['prevent-duplicates-ip'] );
+		
 		update_post_meta( $post_id, 'stars-color', $_POST['stars-color'] );
 		update_post_meta( $post_id, 'stars-color-hover', $_POST['stars-color-hover'] );
 		update_post_meta( $post_id, 'stars-color-active', $_POST['stars-color-active'] );
+		
 		update_post_meta( $post_id, 'prologue', $_POST['prologue'] );
 		update_post_meta( $post_id, 'conclusion', $_POST['conclusion'] );	
 		update_post_meta( $post_id, 'questions', $questions );		
@@ -114,6 +119,14 @@ class UPD8FeedbackCPT {
 		/* getting value of slide-to-next-auto */
 		$slide_to_next_auto = get_post_meta( $object->ID, 'slide-to-next-auto', true );	
 		$slide_to_next_auto = $slide_to_next_auto ? 'checked' : '';
+		
+		/* getting value of prevent-duplicates-cookie */
+		$prevent_duplicates_cookie = get_post_meta( $object->ID, 'prevent-duplicates-cookie', true );	
+		$prevent_duplicates_cookie = $prevent_duplicates_cookie ? 'checked' : '';
+		
+		/* getting value of prevent-duplicates-ip */
+		$prevent_duplicates_ip = get_post_meta( $object->ID, 'prevent-duplicates-ip', true );	
+		$prevent_duplicates_ip = $prevent_duplicates_ip ? 'checked' : '';
 		
 		/* getting stars color */
 		$stars_color = get_post_meta( $object->ID, 'stars-color', true );	
@@ -163,6 +176,14 @@ class UPD8FeedbackCPT {
 			<div class="row">
 				<label for="slide-to-next-auto"><?php _e('Slide to next automatically', 'upd8-feedback') ?></label>
 				<input name="slide-to-next-auto" type="checkbox" <?php echo $slide_to_next_auto ?> />
+			</div>	
+			<div class="row">
+				<label for="prevent-duplicates-cookie"><?php _e('Prevent duplicated form fills (Cookie)', 'upd8-feedback') ?></label>
+				<input name="prevent-duplicates-cookie" type="checkbox" <?php echo $prevent_duplicates_cookie ?> />
+			</div>	
+			<div class="row">
+				<label for="prevent-duplicates-ip"><?php _e('Prevent duplicated form fills (IP)', 'upd8-feedback') ?></label>
+				<input name="prevent-duplicates-ip" type="checkbox" <?php echo $prevent_duplicates_ip ?> />
 			</div>		
 			<div class="row">
 				<label for="stars-color"><?php _e('Stars color', 'upd8-feedback') ?></label>
@@ -265,7 +286,6 @@ class UPD8FeedbackCPT {
 	private function getFormFills($id) {
 		global $wpdb;
 		
-		global $wpdb;
 		$table_name = $wpdb->prefix . 'upd8_feedback_form_fills';
 		
 		$results = $wpdb->get_results( "SELECT * FROM $table_name WHERE form_id = ".$id, OBJECT );		

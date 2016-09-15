@@ -50,12 +50,24 @@ class UPD8Shortcodes {
 		</style>';
 	}
 	
+	private function isIPFilledForm($id, $ip) {
+		global $wpdb;
+
+		$table_name = $wpdb->prefix . 'upd8_feedback_form_fills';
+		
+		$results = $wpdb->get_results( "SELECT * FROM $table_name WHERE form_id = ".$id." AND ip='".$ip."'", OBJECT );		
+		
+		return $results ? true : false;		
+	}
+	
 	function UPD8FeedbackShortCodeFunc( $atts ) {		
 		$atts = shortcode_atts( array(
 			'id' => false,
 		), $atts, 'upd8-feedback' );
 		
 		$feedback = get_post($atts['id']);
+		
+		$display_form = true;
 
 		/* getting value of display-skip-btn */
 		$display_skip_btn = get_post_meta( $atts['id'], 'display-skip-btn', true );	
@@ -64,6 +76,14 @@ class UPD8Shortcodes {
 		/* getting value of slide-to-next-auto */
 		$slide_to_next_auto = get_post_meta( $atts['id'], 'slide-to-next-auto', true );	
 		$slide_to_next_auto = $slide_to_next_auto ? true : false;
+		
+		/* getting value of prevent-duplicates-cookie */
+		$prevent_duplicates_cookie = get_post_meta( $atts['id'], 'prevent-duplicates-cookie', true );	
+		$prevent_duplicates_cookie = $prevent_duplicates_cookie ? 'checked' : '';
+		
+		/* getting value of prevent-duplicates-ip */
+		$prevent_duplicates_ip = get_post_meta( $atts['id'], 'prevent-duplicates-ip', true );	
+		$prevent_duplicates_ip = $prevent_duplicates_ip ? 'checked' : '';
 			
 		$prologue = get_post_meta( $atts['id'], 'prologue', true );	
 		$prologue = $prologue ? $prologue : '';
@@ -91,6 +111,9 @@ class UPD8Shortcodes {
 				</div>
 			</li>';
 		}
+		
+		$display_form = ( $display_form && !$prevent_duplicates_cookie ) || ( $display_form && $prevent_duplicates_cookie && !isset($_COOKIE['form_fill_'.$atts['id']]) ) ? true : false;
+		$display_form = ( $display_form && !$prevent_duplicates_ip ) || ( $display_form && $prevent_duplicates_ip && !$this->isIPFilledForm($atts['id'], $_SERVER['REMOTE_ADDR']) ) ? true : false;
 
 		return '<script type="text/javascript">var ajax_url = \''.admin_url( 'admin-ajax.php' ).'\';</script>
 		'.$this->setUpStyles( $atts['id'] ).'
@@ -98,23 +121,25 @@ class UPD8Shortcodes {
 			<h2>'.$feedback->post_title.'</h2>
 			<div class="wrapper">
 				<div class="inner-wrapper">
+					'.( $display_form ? '
 					<div class="prologue">
 						'.$prologue.'
 						<div class="buttons_container">
 							<button class="start-quiz">'.__('Let\'s go!', 'upd8-feedback').'</button>
 						</div>
 					</div>
-			
+		
 					<ul class="questions">
 						'.$quetions_html.'
 					</ul>
-			
+		
 					<div class="conclusion">
 						'.$conclusion.'
 						<div class="buttons_container">
 							<button class="finish-quiz">'.__('Close', 'upd8-feedback').'</button>
 						</div>
 					</div>
+					' : '<div class="prologue"><p class="form-already-filled">'.__('You have already filled this form.', 'upd8-feedback')) .'</p></div>
 				</div>
 			</div>
 		</div>';

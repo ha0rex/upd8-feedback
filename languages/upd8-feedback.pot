@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-13 17:31+0000\n"
+"POT-Creation-Date: 2016-09-15 12:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco - https://localise.biz/"
 
-#: includes/UPD8FeedbackCPT.class.php:30 includes/UPD8FeedbackCPT.class.php:127
+#: includes/UPD8FeedbackCPT.class.php:30 includes/UPD8FeedbackCPT.class.php:165
 msgid "Feedback"
 msgstr ""
 
@@ -46,55 +46,107 @@ msgstr ""
 msgid "No Feedback forms found"
 msgstr ""
 
-#: includes/UPD8FeedbackCPT.class.php:129
+#: includes/UPD8FeedbackCPT.class.php:168
+msgid "Shortcode"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:173
+msgid "Display skip button"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:177
+msgid "Slide to next automatically"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:181
+msgid "Prevent duplicated form fills (Cookie)"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:185
+msgid "Prevent duplicated form fills (IP)"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:189
+msgid "Stars color"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:193
+msgid "Stars color (hover)"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:197
+msgid "Stars color (active)"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:201
 msgid "Prologue"
 msgstr ""
 
-#: includes/UPD8FeedbackCPT.class.php:141
+#: includes/UPD8FeedbackCPT.class.php:213
 msgid "Conclusion"
 msgstr ""
 
-#: includes/UPD8FeedbackCPT.class.php:153
+#: includes/UPD8FeedbackCPT.class.php:225
 msgid "Questions"
 msgstr ""
 
-#: includes/UPD8FeedbackCPT.class.php:155
+#: includes/UPD8FeedbackCPT.class.php:227
 msgid ""
 "Warning! Reordering or modifying questions on an existing form can cause "
 "confusion while reading stats. If you still want to do that, it's "
 "recommended to create a new form istead."
 msgstr ""
 
-#: includes/UPD8FeedbackCPT.class.php:159
+#: includes/UPD8FeedbackCPT.class.php:231
 msgid "Question"
 msgstr ""
 
-#: includes/UPD8FeedbackCPT.class.php:170
+#: includes/UPD8FeedbackCPT.class.php:240
+msgid "Form Fills"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:243
 msgid "Date"
 msgstr ""
 
-#: includes/UPD8FeedbackCPT.class.php:171
+#: includes/UPD8FeedbackCPT.class.php:244
 msgid "IP"
 msgstr ""
 
-#: includes/UPD8FeedbackCPT.class.php:194
+#: includes/UPD8FeedbackCPT.class.php:245
+msgid "Hostname"
+msgstr ""
+
+#: includes/UPD8FeedbackCPT.class.php:272
 msgid "AVG"
 msgstr ""
 
-#: includes/UPD8Shortcodes.class.php:46
+#: includes/UPD8FeedbackCPT.class.php:273
+msgid "%s individual IPs"
+msgstr ""
+
+#: includes/UPD8Shortcodes.class.php:104
 msgid "Previous"
 msgstr ""
 
-#: includes/UPD8Shortcodes.class.php:46
+#: includes/UPD8Shortcodes.class.php:106
+msgid "Skip"
+msgstr ""
+
+#: includes/UPD8Shortcodes.class.php:109
 msgid "Next"
 msgstr ""
 
-#: includes/UPD8Shortcodes.class.php:57
+#: includes/UPD8Shortcodes.class.php:128
 msgid "Let's go!"
 msgstr ""
 
-#: includes/UPD8Shortcodes.class.php:68
+#: includes/UPD8Shortcodes.class.php:139
 msgid "Close"
+msgstr ""
+
+#: includes/UPD8Shortcodes.class.php:142
+msgid "You have already filled this form."
 msgstr ""
 
 #. Name of the plugin

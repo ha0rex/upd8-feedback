@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UPD8 Feedback\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-13 17:31+0000\n"
-"PO-Revision-Date: 2016-09-13 17:31+0000\n"
+"POT-Creation-Date: 2016-09-15 12:28+0000\n"
+"PO-Revision-Date: 2016-09-15 12:31+0000\n"
 "Last-Translator: levi <levi@racz.nl>\n"
 "Language-Team: Hungarian\n"
 "Language: hu-HU\n"
@@ -13,11 +13,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco - https://localise.biz/"
 
-#: includes/UPD8FeedbackCPT.class.php:153
-msgid "Questions"
-msgstr "Kérdések"
+#: includes/UPD8FeedbackCPT.class.php:168
+msgid "Shortcode"
+msgstr "Shortcode"
 
-#: includes/UPD8FeedbackCPT.class.php:30 includes/UPD8FeedbackCPT.class.php:127
+#: includes/UPD8FeedbackCPT.class.php:173
+msgid "Display skip button"
+msgstr "Kihagy gomb megjelenítée"
+
+#: includes/UPD8FeedbackCPT.class.php:177
+msgid "Slide to next automatically"
+msgstr "Automatikus lapozás"
+
+#: includes/UPD8FeedbackCPT.class.php:181
+msgid "Prevent duplicated form fills (Cookie)"
+msgstr "Űrlap többszöri kitöltésének megakadályozása (Cookie)"
+
+#: includes/UPD8FeedbackCPT.class.php:185
+msgid "Prevent duplicated form fills (IP)"
+msgstr "Űrlap többszöri kitöltésének megakadályozása (Űrlap)"
+
+#: includes/UPD8FeedbackCPT.class.php:189
+msgid "Stars color"
+msgstr "Csillagok színe"
+
+#: includes/UPD8FeedbackCPT.class.php:193
+msgid "Stars color (hover)"
+msgstr "Csillagok színe (hover)"
+
+#: includes/UPD8FeedbackCPT.class.php:197
+msgid "Stars color (active)"
+msgstr "Csillagok színe (aktív)"
+
+#: includes/UPD8FeedbackCPT.class.php:240
+msgid "Form Fills"
+msgstr "Űrlap kitöltések"
+
+#: includes/UPD8FeedbackCPT.class.php:245
+msgid "Hostname"
+msgstr "Hosztnév"
+
+#: includes/UPD8FeedbackCPT.class.php:273
+msgid "%s individual IPs"
+msgstr "%s egyedi IP cím"
+
+#: includes/UPD8Shortcodes.class.php:106
+msgid "Skip"
+msgstr "Kihagy"
+
+#: includes/UPD8Shortcodes.class.php:142
+msgid "You have already filled this form."
+msgstr "Már kitöltötted ezt az űrlapot."
+
+#: includes/UPD8FeedbackCPT.class.php:30 includes/UPD8FeedbackCPT.class.php:165
 msgid "Feedback"
 msgstr "Visszajelzések"
 
@@ -49,15 +97,19 @@ msgstr "Visszajelzési űrlap megtekintése"
 msgid "No Feedback forms found"
 msgstr "Nem található Visszajelzési űrlap"
 
-#: includes/UPD8FeedbackCPT.class.php:129
+#: includes/UPD8FeedbackCPT.class.php:201
 msgid "Prologue"
 msgstr "Bevezető"
 
-#: includes/UPD8FeedbackCPT.class.php:141
+#: includes/UPD8FeedbackCPT.class.php:213
 msgid "Conclusion"
 msgstr "Zárszó"
 
-#: includes/UPD8FeedbackCPT.class.php:155
+#: includes/UPD8FeedbackCPT.class.php:225
+msgid "Questions"
+msgstr "Kérdések"
+
+#: includes/UPD8FeedbackCPT.class.php:227
 msgid ""
 "Warning! Reordering or modifying questions on an existing form can cause "
 "confusion while reading stats. If you still want to do that, it's "
@@ -67,35 +119,35 @@ msgstr ""
 "statisztikák böngészése közben! Ha mégis ezt szeretnéd tenni, ajánlatos "
 "inkább egy új űrlapot készíteni."
 
-#: includes/UPD8FeedbackCPT.class.php:159
+#: includes/UPD8FeedbackCPT.class.php:231
 msgid "Question"
 msgstr "Kérdés"
 
-#: includes/UPD8FeedbackCPT.class.php:170
+#: includes/UPD8FeedbackCPT.class.php:243
 msgid "Date"
 msgstr "Dátum"
 
-#: includes/UPD8FeedbackCPT.class.php:171
+#: includes/UPD8FeedbackCPT.class.php:244
 msgid "IP"
 msgstr "IP"
 
-#: includes/UPD8FeedbackCPT.class.php:194
+#: includes/UPD8FeedbackCPT.class.php:272
 msgid "AVG"
 msgstr "Átlag"
 
-#: includes/UPD8Shortcodes.class.php:46
+#: includes/UPD8Shortcodes.class.php:104
 msgid "Previous"
 msgstr "Előző"
 
-#: includes/UPD8Shortcodes.class.php:46
+#: includes/UPD8Shortcodes.class.php:109
 msgid "Next"
 msgstr "Következő"
 
-#: includes/UPD8Shortcodes.class.php:57
+#: includes/UPD8Shortcodes.class.php:128
 msgid "Let's go!"
 msgstr "Indulás!"
 
-#: includes/UPD8Shortcodes.class.php:68
+#: includes/UPD8Shortcodes.class.php:139
 msgid "Close"
 msgstr "Bezárás"
 

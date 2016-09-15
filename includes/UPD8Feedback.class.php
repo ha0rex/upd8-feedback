@@ -90,7 +90,7 @@ class UPD8Feedback {
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'upd8_feedback_form_fills';
 		
-		$wpdb->insert( 
+		$insert = $wpdb->insert( 
 			$table_name, 
 			array( 
 				'time' => current_time( 'mysql' ), 
@@ -100,8 +100,10 @@ class UPD8Feedback {
 			) 
 		);	
 		
-		echo $table_name;
-		
+		if( $insert ) {
+			setcookie( 'form_fill_'.$_POST['form_id'], true, 30 * DAYS_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN );
+		}
+				
 		return true;
 		die;	
 	}
